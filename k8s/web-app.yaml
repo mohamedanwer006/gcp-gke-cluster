@@ -1,0 +1,55 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: web-app
+spec:
+  selector:
+    matchLabels:
+      app: web-app
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: web-app
+    spec:
+      containers:
+      - name: web-app
+        image: gcr.io/anwer-gcp/web-app:latest
+        resources:
+          limits:
+            memory: "128Mi"
+            cpu: "128m"
+        ports:
+        - containerPort: 8000
+        env:
+          - name: PORT
+            valueFrom:
+              configMapKeyRef:
+                name: web-app-config
+                key: port
+          - name: HOST
+            valueFrom:
+              configMapKeyRef:
+                name: web-app-config
+                key: host
+          - name: REDIS_HOST
+            valueFrom:
+              configMapKeyRef:
+                name: web-app-config
+                key: redis_host
+          - name: REDIS_PORT
+            valueFrom:
+              configMapKeyRef:
+                name: web-app-config
+                key: redis_port
+          - name: REDIS_DB
+            valueFrom:
+              configMapKeyRef:
+                name: web-app-config
+                key: redis_db
+          - name: ENVIRONMENT
+            valueFrom:
+              configMapKeyRef:
+                name: web-app-config
+                key: environment
+
