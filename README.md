@@ -2,7 +2,7 @@
 
 ![infrastructure](./assets/images/draw.png)
 
-[**Task description** ](#task-📋)
+[**Task description** ](#task)
 
 ## Containerize the web application [link](https://github.com/atefhares/DevOps-Challenge-Demo-Code)
 - Create Dockerfile for the web application
@@ -84,7 +84,8 @@ terraform destroy
 
 
 
-## Task 📋
+## Task 
+📋
 
 1 VPC
 2 subnets (management subnet & restricted subnet):
